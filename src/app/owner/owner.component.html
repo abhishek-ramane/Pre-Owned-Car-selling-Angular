@@ -1,0 +1,27 @@
+<h3>{{Owner.owner_name}}:{{Owner.owner_email}}</h3>
+<a class="nav-link" routerLink="/add-car" routerLinkActive="active">Add Car</a>
+<div class="container" *ngIf="cars.length>0">
+    <div class="row justify-content-md-center">
+      <div class="car-list" *ngFor="let car of cars">
+         <div class="card" style="width: 18rem;">
+          <img class="card-img-top" [src]="imgUrl+car.listImages[0].car_images" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{car.brand.car_brand}},{{car.brand.car_brand_model}},{{car.brand.car_varient}}</h5>
+            <p hidden>{{car.car_id}}</p>
+            <p class="card-text">
+              You have <b>Rs {{car.expected_price}}</b> expected
+              and your car travleed <b>{{car.traveled_distance}}</b> Km distance after purchasing it in year <b>{{car.car_registration_year}}</b>
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">Car Company : <b>{{car.brand.car_brand}}</b></li>
+            <li class="list-group-item">Car Model : <b>{{car.brand.car_brand_model}}</b></li>
+            <li class="list-group-item">Varient : <b>{{car.brand.car_varient}}</b></li>
+          </ul>
+          <div class="card-body">
+              <button type="button" class="btn btn-primary btn-block" (click)="delete($event)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

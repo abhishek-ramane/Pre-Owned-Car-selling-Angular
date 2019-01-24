@@ -1,0 +1,30 @@
+<div class="container" *ngIf="selectedCar==null">
+  <div class="container" *ngIf="cars.length>0">
+    <div class="row justify-content-md-center">
+      <div class="car-list" *ngFor="let car of cars">
+         <div class="card" style="width: 18rem;">
+          <img class="card-img-top" [src]="imgUrl+car.listImages[0].car_images" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">{{car.brand.car_brand}},{{car.brand.car_brand_model}},{{car.brand.car_varient}}</h5>
+            <p hidden>{{car.car_id}}</p>
+            <p class="card-text">
+              Expected price is <b>Rs {{car.expected_price}}</b> with <b>{{car.traveled_distance}}</b> Km  traveled Distance after purchasing it in year <b>{{car.car_registration_year}}</b>
+            </p>
+          </div>
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item">Car Company : <b>{{car.brand.car_brand}}</b></li>
+            <li class="list-group-item">Car Model : <b>{{car.brand.car_brand_model}}</b></li>
+            <li class="list-group-item">Varient : <b>{{car.brand.car_varient}}</b></li>
+          </ul>
+          <div class="card-body">
+              <button type="button" class="btn btn-primary btn-block" (click)="showOwner($event)">View Owner</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+<div *ngIf="selectedCar!=null">
+<app-car-details></app-car-details>
+
+</div>
